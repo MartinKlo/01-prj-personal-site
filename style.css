@@ -16,35 +16,53 @@
 
 /* About Me Section */
 .about-me {
-  display: flex;
-  align-items: center;
-  justify-content: center; /* Center the content horizontally */
-  flex-grow: 0; /* Prevent the section from growing */
-  flex-shrink: 1; /* Allow the section to shrink if space is not used */
-  padding: 0; /* Remove padding */
+  display: flex; /* Use flexbox for layout */
+  flex-direction: row; /* Arrange items side by side */
+  align-items: center; /* Align items vertically */
+  justify-content: center; /* Center items horizontally */
+  gap: 20px; /* Add spacing between the profile picture and text */
+  padding: 20px; /* Add padding for spacing */
   margin-bottom: 20px; /* Reduce space below the section */
 }
 
+@media (max-width: 768px) {
+  .about-me {
+    flex-direction: column; /* Stack items vertically on smaller screens */
+    align-items: center; /* Center items horizontally */
+    gap: 10px; /* Reduce spacing between items on smaller screens */
+  }
+}
+
 .profile-picture img {
-  width: 350px; /* Maintain width */
-  height: 350px; /* Maintain height */
+  width: 300px; /* Adjust width for better responsiveness */
+  height: auto; /* Maintain aspect ratio */
   border-radius: 15px; /* Rounded edges */
   margin: 0 auto; /* Center the profile picture horizontally */
   display: block; /* Ensure the image behaves as a block element */
-  padding: 0px 60px; /* Add padding around the profile picture */
+  padding: 0; /* Remove padding */
 }
 
 @media (max-width: 768px) {
   .profile-picture img {
-    margin-right: 30px; /* Reduce space for smaller screens */
+    margin-bottom: 1.5em; /* Add extra space below the profile picture on mobile */
   }
 }
 
 .about-text {
-  max-width: 600px;
-  background-color: #0d0d0d; /* Updated to an even darker grey */
-  padding: 10px 40px; /* Equal padding above and on the sides */
+  max-width: 600px; /* Limit the width of the text */
+  background-color: rgba(13, 13, 13, 1); /* Decrease opacity by 10% */
+  padding: 20px; /* Add padding for spacing */
   border-radius: 10px; /* Slightly round the corners */
+  margin: 20px; /* Add margin for spacing */
+  text-align: center; /* Center the text */
+}
+
+@media (max-width: 768px) {
+  .about-text {
+    max-width: 100%; /* Expand to fit the full width of the screen */
+    background-color: rgba(13, 13, 13, 0.9); /* Decrease opacity by 10% */
+    margin: 10px 0; /* Reduce margin for smaller screens */
+  }
 }
 
 /* Container for consistent alignment */
@@ -60,9 +78,9 @@ h2 {
 
 /* Skills Section */
 .skills {
-  padding: 0px 150px;
+  padding: 0px 2em;
   margin: 0 auto 20px; /* Reduce space below the section */
-  max-width: 800px; /* Maintain width of the skills text box */
+  max-width: 80%; /* Maintain width of the skills text box */
   background-color: rgb(50, 50, 50); /* Greyscale background color */
 }
 
@@ -91,13 +109,18 @@ h2 {
 
 body {
   background-color: black; /* Set default background to black */
-  background-image: url('img/Xuecheng Liu - China.jpg'); /* Set hero image as the background */
-  background-size: cover; /* Cover the entire page */
+  background-image: url('img/BackgroundLoad.jpg'); /* Set LQIP as the initial background */
+  background-size: cover; /* Ensure the image covers the entire area */
   background-position: center; /* Center the background image */
   background-attachment: fixed; /* Keep the background fixed during scrolling */
   color: white; /* Ensure text is readable on the dark background */
   margin: 0;
-  font-family: Arial, sans-serif; /* Set a simple font */
+  font-family: 'Roboto', Arial, sans-serif; /* Set font to Roboto with fallbacks */
+  transition: background-image 1s ease-in-out; /* Add a fade transition for background changes */
+}
+
+body.loaded {
+  background-image: url('img/Xuecheng Liu - China.jpg'); /* Switch to the high-quality image */
 }
 
 main {
@@ -113,6 +136,14 @@ main {
   justify-content: space-between; /* Distribute space between children */
 }
 
+@media (max-width: 768px) {
+  main {
+    max-width: 100%; /* Extend the overlay to the full width of the screen */
+    background-color: rgba(0, 0, 0, 0.75);
+    border-radius: 0; /* Remove rounded corners for edge-to-edge effect */
+  }
+}
+
 /* Navbar Section */
 .navbar-section {
   margin-bottom: 10px; /* Reduce space below the navbar section */
@@ -122,14 +153,16 @@ main {
   background-color: rgba(0, 0, 0, 0.85); /* Semi-transparent black background */
   padding: 20px 20px; /* Increased vertical padding for more height */
   border-radius: 5px; /* Slightly round the corners */
+  position: relative; /* Position for dropdown menu */
 }
 
 .navbar ul {
-  list-style-type: none; /* Remove bullet points */
+list-style-type: none; /* Remove bullet points */
   display: flex; /* Display items in a row */
   justify-content: center; /* Center the items horizontally */
-  padding: 0;
+padding: 0;
   margin: 0;
+  flex-direction: row; /* Default row layout for desktop */
 }
 
 .navbar li {
@@ -144,4 +177,59 @@ main {
 
 .navbar a:hover {
   color: yellow; /* Change color to bright yellow on hover */
+}
+
+/* Hamburger menu for mobile */
+.hamburger {
+  display: none; /* Hide by default */
+  cursor: pointer; /* Pointer cursor for interactivity */
+  font-size: 1.5rem; /* Increase size for visibility */
+  color: white; /* White color for the icon */
+  position: absolute; /* Default positioning */
+  top: 20px; /* Align with navbar padding */
+  left: 20px; /* Move to the left side */
+}
+
+@media (max-width: 768px) {
+  .navbar ul {
+    display: none; /* Hide the menu by default on mobile */
+    flex-direction: column; /* Stack items vertically */
+    background-color: rgba(0, 0, 0, 0.95); /* Slightly transparent black background */
+    position: fixed; /* Make the dropdown menu fill the screen */
+    top: 0; /* Start at the top of the screen */
+    left: 0; /* Start at the left of the screen */
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    padding: 20px 0; /* Add padding for spacing */
+    z-index: 999; /* Ensure it stays above other elements */
+  }
+
+  .navbar ul.show {
+    display: flex; /* Show the menu when active */
+  }
+
+  .navbar ul li {
+    margin: 30px 0; /* Increase spacing between menu items */
+    text-align: center; /* Center the menu items */
+  }
+
+  .navbar ul li a {
+    font-size: 1.5rem; /* Increase font size of the dropdown menu text */
+  }
+
+  .hamburger {
+    display: block; /* Show hamburger menu on mobile */
+    position: fixed; /* Keep the hamburger menu fixed in the viewport */
+    top: 20px; /* Distance from the top of the screen */
+    left: 20px; /* Distance from the left of the screen */
+    z-index: 1000; /* Ensure it stays on top of other elements */
+  }
+
+  .navbar {
+    background-color: transparent; /* Clear the background color on mobile */
+  }
+}
+
+p {
+  line-height: 1.5em; /* Set line spacing to 1.5em for better readability */
 }
