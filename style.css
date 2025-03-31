@@ -1,1 +1,43 @@
-/* Add you CSS here */
+/* Hero Section */
+.hero {
+  background-image: url('img/hero-bg.jpg');
+  background-size: cover;
+  background-position: center;
+  text-align: center;
+  color: white;
+  padding: 50px 20px;
+}
+
+/* About Me Section */
+.about-me {
+  display: flex;
+  align-items: center;
+  justify-content: center; /* Center the content horizontally */
+  padding: 20px;
+}
+
+.profile-picture img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  margin-right: 20px;
+}
+
+.about-text {
+  max-width: 600px;
+}
+
+/* Skills Section */
+.skills {
+  padding: 20px;
+  background-color: #f9f9f9;
+}
+
+.skills ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.skills li {
+  margin: 5px 0;
+}
