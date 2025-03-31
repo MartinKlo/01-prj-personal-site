@@ -1,11 +1,17 @@
 /* Hero Section */
 .hero {
-  background-image: url('img/hero-bg.jpg');
-  background-size: cover;
-  background-position: center;
-  text-align: center;
+  background-color: black; /* Replace the hero section with a black fill */
+  padding: 50px 20px; /* Maintain padding for spacing */
+  text-align: center; /* Center the text */
   color: white;
-  padding: 50px 20px;
+}
+
+/* Ensure the hero image adjusts for smaller screens */
+@media (max-width: 768px) {
+  .hero {
+    background-size: contain; /* Adjust to fit smaller screens */
+    padding: 30px 10px; /* Reduce padding for smaller screens */
+  }
 }
 
 /* About Me Section */
@@ -13,31 +19,129 @@
   display: flex;
   align-items: center;
   justify-content: center; /* Center the content horizontally */
-  padding: 20px;
+  flex-grow: 0; /* Prevent the section from growing */
+  flex-shrink: 1; /* Allow the section to shrink if space is not used */
+  padding: 0; /* Remove padding */
+  margin-bottom: 20px; /* Reduce space below the section */
 }
 
 .profile-picture img {
-  width: 150px;
-  height: 150px;
-  border-radius: 50%;
-  margin-right: 20px;
+  width: 350px; /* Maintain width */
+  height: 350px; /* Maintain height */
+  border-radius: 15px; /* Rounded edges */
+  margin: 0 auto; /* Center the profile picture horizontally */
+  display: block; /* Ensure the image behaves as a block element */
+  padding: 0px 60px; /* Add padding around the profile picture */
+}
+
+@media (max-width: 768px) {
+  .profile-picture img {
+    margin-right: 30px; /* Reduce space for smaller screens */
+  }
 }
 
 .about-text {
   max-width: 600px;
+  background-color: #0d0d0d; /* Updated to an even darker grey */
+  padding: 10px 40px; /* Equal padding above and on the sides */
+  border-radius: 10px; /* Slightly round the corners */
+}
+
+/* Container for consistent alignment */
+.container {
+  margin: 0 auto; /* Center the container horizontally */
+  text-align: center; /* Center the content inside the container */
+}
+
+/* Increase size of h2 elements */
+h2 {
+  font-size: 2rem; /* Larger font size for h2 */
 }
 
 /* Skills Section */
 .skills {
-  padding: 20px;
-  background-color: #f9f9f9;
+  padding: 0px 150px;
+  margin: 0 auto 20px; /* Reduce space below the section */
+  max-width: 800px; /* Maintain width of the skills text box */
+  background-color: rgb(50, 50, 50); /* Greyscale background color */
+}
+
+.skills h2 {
+  text-align: center; /* Center the header text */
+  margin-top: 10px; /* Reduce the space above the header */
 }
 
 .skills ul {
-  list-style-type: none;
+  display: flex; /* Use flexbox for layout */
+  flex-wrap: wrap; /* Allow wrapping to create rows */
+  justify-content: center; /* Center items horizontally */
+  gap: 30px; /* Increased space between items */
   padding: 0;
+  list-style-type: none; /* Remove bullet points */
+  flex-grow: 0; /* Prevent the list from growing */
+  flex-shrink: 1; /* Allow the list to shrink if space is not used */
 }
 
 .skills li {
-  margin: 5px 0;
+  flex: 1 1 calc(50% - 20px); /* Each item takes 50% width minus the gap */
+  text-align: center; /* Center the text */
+  margin: 0; /* Remove default margin */
+  font-size: 1.2rem; /* Increase text size */
+}
+
+body {
+  background-color: black; /* Set default background to black */
+  background-image: url('img/Xuecheng Liu - China.jpg'); /* Set hero image as the background */
+  background-size: cover; /* Cover the entire page */
+  background-position: center; /* Center the background image */
+  background-attachment: fixed; /* Keep the background fixed during scrolling */
+  color: white; /* Ensure text is readable on the dark background */
+  margin: 0;
+  font-family: Arial, sans-serif; /* Set a simple font */
+}
+
+main {
+  max-width: 66.67%; /* Increase width to two-thirds of the page */
+  margin: 0 auto; /* Center the content horizontally */
+  background-color: rgba(0, 0, 0, 0.85); /* Increase opacity for better readability */
+  padding: 20px; /* Add padding inside the content area */
+  border-radius: 10px; /* Slightly round the corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Add a subtle shadow for depth */
+  min-height: 100vh; /* Extend the column to fill the full height of the viewport */
+  display: flex; /* Use flexbox for vertical alignment */
+  flex-direction: column; /* Stack children vertically */
+  justify-content: space-between; /* Distribute space between children */
+}
+
+/* Navbar Section */
+.navbar-section {
+  margin-bottom: 10px; /* Reduce space below the navbar section */
+}
+
+.navbar {
+  background-color: rgba(0, 0, 0, 0.85); /* Semi-transparent black background */
+  padding: 20px 20px; /* Increased vertical padding for more height */
+  border-radius: 5px; /* Slightly round the corners */
+}
+
+.navbar ul {
+  list-style-type: none; /* Remove bullet points */
+  display: flex; /* Display items in a row */
+  justify-content: center; /* Center the items horizontally */
+  padding: 0;
+  margin: 0;
+}
+
+.navbar li {
+  margin: 0 25px; /* Increased space between items */
+}
+
+.navbar a {
+  text-decoration: none; /* Remove underline from links */
+  color: white; /* White text color */
+  font-weight: bold; /* Make the text bold */
+}
+
+.navbar a:hover {
+  color: yellow; /* Change color to bright yellow on hover */
 }
